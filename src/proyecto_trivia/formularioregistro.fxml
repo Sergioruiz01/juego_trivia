@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: darkblue;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="proyecto_trivia.FormularioregistroController">
+  <ImageView fitHeight="78.0" fitWidth="83.0" layoutX="53.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../image/trivia.jpg" />
+         </image>
+   </ImageView>
+   <TextField alignment="CENTER" layoutX="167.0" layoutY="24.0" prefHeight="72.0" prefWidth="379.0" style="-fx-background-color: yellow;" text="CREA TU CUENTA">
+      <font>
+         <Font size="24.0" />
+      </font>
+   </TextField>
+   <TextField fx:id="nusuario" layoutX="206.0" layoutY="147.0" onAction="#confirmardatos" prefHeight="48.0" prefWidth="337.0" promptText="Usuario" style="-fx-background-color: lightblue;" />
+   <TextField fx:id="correo" layoutX="206.0" layoutY="200.0" onAction="#confirmardatos" prefHeight="48.0" prefWidth="337.0" promptText="example@gmail.com" style="-fx-background-color: lightblue;" />
+   <Label layoutX="15.0" layoutY="152.0" prefHeight="38.0" prefWidth="173.0" text="Nombre de usuario" textFill="#fcfafa">
+      <font>
+         <Font size="20.0" />
+      </font>
+   </Label>
+   <Label layoutX="10.0" layoutY="209.0" text="Correo electronico" textFill="#fffdfd">
+      <font>
+         <Font size="20.0" />
+      </font>
+   </Label>
+   <Label layoutX="51.0" layoutY="262.0" text="Contrasena" textFill="#fff9f9">
+      <font>
+         <Font size="20.0" />
+      </font>
+   </Label>
+   <Label layoutX="14.0" layoutY="314.0" text="Confirmar contrasena" textFill="#f5efef">
+      <font>
+         <Font size="20.0" />
+      </font>
+   </Label>
+   <Button fx:id="button3" layoutX="304.0" layoutY="358.0" mnemonicParsing="false" onAction="#crearcuenta" style="-fx-background-color: yellow;" text="CREAR USUARIO">
+      <font>
+         <Font size="16.0" />
+      </font>
+   </Button>
+   <PasswordField fx:id="contrasena" layoutX="206.0" layoutY="253.0" onAction="#confirmardatos" prefHeight="48.0" prefWidth="337.0" promptText="Contrasena" style="-fx-background-color: lightblue;" />
+   <PasswordField fx:id="confcontrasena" layoutX="206.0" layoutY="305.0" onAction="#confirmardatos" prefHeight="48.0" prefWidth="337.0" promptText="Confirmar contrasena" style="-fx-background-color: lightblue;" />
+   <Label fx:id="datoincorrecto" layoutX="211.0" layoutY="114.0" prefHeight="17.0" prefWidth="328.0" textFill="#f2efef">
+      <font>
+         <Font size="15.0" />
+      </font>
+   </Label>      
+</AnchorPane>
