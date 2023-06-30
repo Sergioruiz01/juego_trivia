@@ -38,7 +38,25 @@ public class FormularioregistroController implements Initializable {
  @FXML
  private Button button3;
  
-       
+ // metodo para verificar datos ingresados por el usuario
+@FXML
+public boolean confirmardatos(){
+       nombusuario = nusuario.getText();
+       correo_usuario = correo.getText();
+       contrasena_usuario = contrasena.getText();
+       confcontrasena_usuario = confcontrasena.getText();
+       if (nombusuario.isEmpty() || correo_usuario.isEmpty() || contrasena_usuario.isEmpty()) {
+            datoincorrecto.setText("Complete los espacios en blanco");
+            return false;
+        } else if (!confcontrasena_usuario.equals(contrasena_usuario)) {
+            datoincorrecto.setText("Las contraseñas no coinciden");
+            return false;
+        } else {
+            datoincorrecto.setText("Datos Correctos");
+            return true;
+       }
+    }      
+ 
  // metodo al pulsar el boton crear cuenta, redirige a inciar sesion 
  @FXML
 public void crearcuenta(ActionEvent event) {
@@ -50,33 +68,21 @@ public void crearcuenta(ActionEvent event) {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("iniciodesesion.fxml"));
         Parent root = loader.load();
        
+        // Pasar el nombre de usuario y contrasena al controlador de inicio de sesión
+    
+    IniciodesesionController iniciodesesionController = loader.getController();
+    iniciodesesionController.setNombreUsuario(nombusuario);
+    iniciodesesionController.setContrasenaUsuario(contrasena_usuario);
+
         
         Stage newstage = new Stage();
-        stage.setScene(new Scene(root));
-        stage.show();
+        newstage.setScene(new Scene(root));
+        newstage.show();
     } catch (IOException e) {
         e.printStackTrace();
     }
 }
-// metodo para verificar datos ingresados por el usuario
-@FXML
-public boolean confirmardatos(){
-       nombusuario = nusuario.getText();
-       correo_usuario = correo.getText();
-       contrasena_usuario = contrasena.getText();
-       confcontrasena_usuario = confcontrasena.getText();
-       if(confcontrasena_usuario.equals(contrasena_usuario ))
-       {    
-           datoincorrecto.setText("Datos Correctos");
-           return true;
-       }  else if(nombusuario.isEmpty()|| correo_usuario.isEmpty()|| contrasena_usuario.isEmpty()){
-           datoincorrecto.setText("Complete los espacios en blanco");
-             return false;
-       }       
-             else{ datoincorrecto.setText("Verifique los datos ingresados");
-               return false; 
-       }
-    }
+
     /**
      * Initializes the controller class.
      */

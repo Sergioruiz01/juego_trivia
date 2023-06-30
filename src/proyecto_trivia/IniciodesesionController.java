@@ -15,7 +15,6 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Label;
 
-
 //Controlador primera pantalla para crear usuario o iniciar sesion 
 public class IniciodesesionController implements Initializable {
     
@@ -24,36 +23,59 @@ public class IniciodesesionController implements Initializable {
  private Button button4;
  @FXML
  private Button button5;
- /* conexion a los datos ingresados por el usuario
  @FXML
-   private TextField usuario_u;
-    private String usuario_inicio;
+   private TextField usuario_iniciodesesion;
+   private String usuario_inicio;
  @FXML
-   private PasswordField contrasena_c;
-     private String contrasena_inicio;
- @FXML
-  private Label datoincorrecto;
- 
-    private String nombusuario;
-    private String contrasena_usuario;**/
+   private PasswordField contrasena_iniciodesesion;
+   private String contrasena_inicio;
+@FXML
+   private Label datoincorrecto;   
+
+    private String nombreUsuario; 
+    private String contrasenaUsuario;
+
+    public void setNombreUsuario(String nombreUsuario) {
+        this.nombreUsuario = nombreUsuario;
+    } 
+     public void setContrasenaUsuario(String contrasenaUsuario) {
+        this.contrasenaUsuario = contrasenaUsuario;
+    } 
+
+
+    @FXML
+    public boolean verificardatos(){
+       usuario_inicio = usuario_iniciodesesion.getText();
+       contrasena_inicio = contrasena_iniciodesesion.getText();
        
- 
+       if (usuario_inicio.equals(nombreUsuario)&&contrasena_inicio.equals(contrasenaUsuario)) {
+           
+            return true;
+        } else  {
+            datoincorrecto.setText("Verifique los Datos o Cree una cuenta");
+            return false;
+        } 
+    }      
+
 // metoodo para boton de inicio
     @FXML
     public void iniciodejuego(ActionEvent event) {
-        
+        if (!verificardatos()){
+        return;
+    }
     try { Stage stage = (Stage) button4.getScene().getWindow();
         stage.close();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("normasdeljuego.fxml"));
         Parent root = loader.load();
 
         Stage newstage = new Stage();
-        stage.setScene(new Scene(root));
-        stage.show();
+        newstage.setScene(new Scene(root));
+        newstage.show();
     } catch (IOException e) {
         e.printStackTrace();
     }
 }
+    
 // metodo al pulsar el boton no tienes cuenta, vuelve al registro 
 @FXML
 public void aunnotienescuenta(ActionEvent event) {
@@ -63,8 +85,8 @@ public void aunnotienescuenta(ActionEvent event) {
         Parent root = loader.load();
 
         Stage newstage = new Stage();
-        stage.setScene(new Scene(root));
-        stage.show();
+        newstage.setScene(new Scene(root));
+        newstage.show();
     } catch (IOException e) {
         e.printStackTrace();
     }

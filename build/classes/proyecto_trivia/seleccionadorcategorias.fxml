@@ -24,14 +24,14 @@
             <Font size="27.0" />
          </font>
       </CheckBox>
-      <CheckBox fx:id="ciencias" alignment="CENTER" layoutX="312.0" layoutY="146.0" mnemonicParsing="false" prefHeight="75.0" prefWidth="266.0" style="-fx-background-color: lightblue;" text="Ciencias" textFill="#05191e">
+      <CheckBox fx:id="ciencias" alignment="CENTER" layoutX="312.0" layoutY="146.0" mnemonicParsing="false" prefHeight="75.0" prefWidth="266.0" style="-fx-background-color: lightblue;" text="Deportes" textFill="#05191e">
          <font>
             <Font size="29.0" />
          </font>
       </CheckBox>
-      <CheckBox fx:id="logicaymate" layoutX="312.0" layoutY="250.0" mnemonicParsing="false" onAction="#obtenerCategoriasSeleccionadas" prefHeight="75.0" prefWidth="266.0" style="-fx-background-color: lightblue;" text="Lógica y Matemática " textFill="#05191e">
+      <CheckBox fx:id="logicaymate" alignment="CENTER" layoutX="312.0" layoutY="250.0" mnemonicParsing="false" onAction="#obtenerCategoriasSeleccionadas" prefHeight="75.0" prefWidth="266.0" style="-fx-background-color: lightblue;" text="Historia" textAlignment="CENTER" textFill="#05191e">
          <font>
-            <Font size="23.0" />
+            <Font size="34.0" />
          </font>
       </CheckBox>
    </children>
