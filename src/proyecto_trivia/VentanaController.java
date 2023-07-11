@@ -15,7 +15,12 @@ import javafx.stage.Stage;
 
 //Controlador primera pantalla para crear usuario o iniciar sesion 
 public class VentanaController implements Initializable {
-    
+    private Main app;
+
+    public void setApp(Main app) {
+      
+        this.app = app;
+    }
     //conexion a los botones
  @FXML
  private Button button1;

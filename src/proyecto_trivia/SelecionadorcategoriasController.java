@@ -1,77 +1,75 @@
-
 package proyecto_trivia;
 
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.control.CheckBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.Button;
-import javafx.event.ActionEvent;
+
 import java.io.IOException;
 import java.net.URL;
-import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.stage.Stage;
-import javafx.scene.control.CheckBox;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 
-
-/**
- * FXML Controller class
- *
- * @author admin
- */
 public class SelecionadorcategoriasController implements Initializable {
-
-   @FXML
- private Button button7;
-   
     @FXML
-    private CheckBox culturageneral;
-    @FXML
-    private CheckBox ciencias;
-    @FXML
-    private CheckBox logicaymate;
+    private CheckBox cultura_general;
 
-  
+    @FXML
+    private CheckBox deportes;
 
-    public List<String> obtenerCategoriasSeleccionadas() {
+    @FXML
+    private CheckBox historia;
+
+    @FXML
+    private Label categoriasSeleccionadasLabel;
+
+    @FXML
+    private Button comenzar;
+
+    @FXML
+    private void seleccionar() throws IOException {
+        
+    
         List<String> categoriasSeleccionadas = new ArrayList<>();
 
-        if (culturageneral.isSelected()) {
+        if (cultura_general.isSelected()) {
             categoriasSeleccionadas.add("Cultura General");
         }
-        if (ciencias.isSelected()) {
-            categoriasSeleccionadas.add("Ciencias");
-        }
-        if (logicaymate.isSelected()) {
-            categoriasSeleccionadas.add("Logica y Matematica");
+
+        if (deportes.isSelected()) {
+            categoriasSeleccionadas.add("Deportes");
         }
 
-        return categoriasSeleccionadas;
-    }
+        if (historia.isSelected()) {
+            categoriasSeleccionadas.add("Historia");
+        }
 
+        if (!categoriasSeleccionadas.isEmpty()) {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("preguntas.fxml"));
+            Parent root = loader.load();
 
-       
- // metodo al pulsar el boton inicion de sesion
- @FXML
-public void seleccionar(ActionEvent event) {
-    try { Stage stage = (Stage) button7.getScene().getWindow();
-        stage.close();
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("preguntas.fxml"));
-        Parent root = loader.load();
+            // Obtener el controlador de la vista de preguntas
+            PreguntasController preguntasController = loader.getController();
 
-        Stage newstage = new Stage();
-        newstage.setScene(new Scene(root));
-        newstage.show();
-    } catch (IOException e) {
-        e.printStackTrace();
-    }
+             // Inicializar la lista categoriasSeleccionadas en el controlador
+             preguntasController.setCategoriasSeleccionadas(new ArrayList<>(categoriasSeleccionadas));
+
+            Scene scene = comenzar.getScene();
+            scene.setRoot(root);
 }
+            else {
+            categoriasSeleccionadasLabel.setText("Selecciona al menos una categoría.");
+            }
+        
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-    }    
-    
+        categoriasSeleccionadasLabel.setText("");
+    }
 }

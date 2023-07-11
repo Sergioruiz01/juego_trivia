@@ -22,9 +22,6 @@ public class FormularioregistroController implements Initializable {
    private TextField nusuario;
     private String nombusuario;
  @FXML
-   private TextField correo;
-    private String correo_usuario;
- @FXML
    private PasswordField contrasena;
      private String contrasena_usuario;
  @FXML
@@ -42,10 +39,9 @@ public class FormularioregistroController implements Initializable {
 @FXML
 public boolean confirmardatos(){
        nombusuario = nusuario.getText();
-       correo_usuario = correo.getText();
        contrasena_usuario = contrasena.getText();
        confcontrasena_usuario = confcontrasena.getText();
-       if (nombusuario.isEmpty() || correo_usuario.isEmpty() || contrasena_usuario.isEmpty()) {
+       if (nombusuario.isEmpty() || contrasena_usuario.isEmpty()) {
             datoincorrecto.setText("Complete los espacios en blanco");
             return false;
         } else if (!confcontrasena_usuario.equals(contrasena_usuario)) {
